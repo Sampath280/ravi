@@ -23,10 +23,10 @@ jobs:
 
       - name: Build frontend
         run: |
-          cd frontend
+          cd my-react-app
           npm install
           npm run build
-        working-directory: ./frontend
+        working-directory: ./my-react-app
 
       - name: Build backend
         run: |
@@ -58,8 +58,8 @@ jobs:
       - name: Download frontend artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: frontend
-          path: ./frontend
+          name: my-react-app
+          path: ./my-react-app
 
       - name: Download backend artifact from build job
         uses: actions/download-artifact@v3
@@ -73,7 +73,7 @@ jobs:
         with:
           app-name: 'certificate122'
           slot-name: 'Production'
-          package: ./frontend
+          package: ./my-react-app
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
 
       - name: 'Deploy backend to Azure Web App'
